@@ -39,9 +39,9 @@ CREATE TABLE IF NOT EXISTS expenses (
 CREATE TABLE IF NOT EXISTS budgets (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     monthly_limit DECIMAL(10,2) NOT NULL,
-    month VARCHAR(7) NOT NULL, -- Format: YYYY-MM (e.g., 2026-05)
+    budget_month VARCHAR(7) NOT NULL, -- Format: YYYY-MM (e.g., 2026-05)
     user_id BIGINT NOT NULL,
-    UNIQUE KEY uq_user_month (user_id, month),
+    UNIQUE KEY uq_user_month (user_id, budget_month),
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 

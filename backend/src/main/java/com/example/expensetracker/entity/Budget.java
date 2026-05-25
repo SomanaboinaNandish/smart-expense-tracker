@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "budgets", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"user_id", "month"})
+    @UniqueConstraint(columnNames = {"user_id", "budget_month"})
 })
 @Data
 @NoArgsConstructor
@@ -23,7 +23,7 @@ public class Budget {
     @Column(name = "monthly_limit", nullable = false, precision = 10, scale = 2)
     private BigDecimal monthlyLimit;
 
-    @Column(nullable = false, length = 7)
+    @Column(name = "budget_month", nullable = false, length = 7)
     private String month; // Format: "YYYY-MM"
 
     @ManyToOne(fetch = FetchType.LAZY)
