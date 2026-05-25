@@ -26,6 +26,7 @@ const handleResponse = async (response) => {
     if (response.status === 401) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
+      window.location.reload();
     }
     const error = (data && data.message) || response.statusText;
     throw new Error(error);
