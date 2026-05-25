@@ -1,0 +1,35 @@
+# Java (Maven)
+**/target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+.mvn/wrapper/maven-wrapper.jar
+
+# Node / React
+**/node_modules/
+**/dist/
+.eslintcache
+
+# IDE / Editor config
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+*.local
+
+# Environment variables
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# H2 database files
+*.mv.db
+*.trace.db

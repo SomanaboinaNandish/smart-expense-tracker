@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: expense-db
+    environment:
+      MYSQL_DATABASE: expensedb
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    restart: always
+    networks:
+      - expense-network
+
+  backend:
+    build: ./backend
+    container_name: expense-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_NAME=expensedb
+      - DB_USER=root
+      - DB_PASSWORD=root
+    depends_on:
+      - db
+    restart: always
+    networks:
+      - expense-network
+
+volumes:
+  mysql-data:
+
+networks:
+  expense-network:
+    driver: bridge
